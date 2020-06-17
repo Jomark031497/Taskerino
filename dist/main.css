@@ -134,3 +134,14 @@ input {
     font-size: 40px;
 }
 
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+}
+
+.task-form{
+
+}
+

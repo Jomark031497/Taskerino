@@ -64,6 +64,7 @@ export const renderTasks = (id) => {
     const projTitle = document.createElement("div");
     projTitle.textContent = `Project: ${projectList[id].title}`;
     projTitle.classList.add("task-project-header");
+
     const addTaskBtn = document.createElement("button");
     addTaskBtn.classList.add("add-task-button");
     addTaskBtn.innerText = "+ Add Task";
@@ -77,7 +78,6 @@ export const addTaskForm = (id) => {
 
     const taskForm = document.createElement("form");
     taskForm.classList.add("add-task-form");
-
 
     const task = document.createElement("input");
     task.type = "input"
@@ -96,7 +96,7 @@ export const addTaskForm = (id) => {
 
     const description = document.createElement("textarea");
     description.classList.add("description", "task-form");
-
+    description.placeholder = "Description";
     const submitTask = document.createElement("button");
     submitTask.classList.add("submit-task", "task-form");
     submitTask.id = "submit-button";
