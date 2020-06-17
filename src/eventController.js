@@ -27,7 +27,6 @@ export const loadDOMEvents = () => {
 
     domLoader.taskContainer.addEventListener("click", e => {
 
-
         if (e.target.className.toLowerCase() === "add-task-button") {
             addTaskForm(e.target.id);
         }
@@ -39,7 +38,13 @@ export const loadDOMEvents = () => {
             e.target.parentNode.parentNode.removeChild(domLoader.taskContainer.lastElementChild);
             const newTodo = createTodo(taskName, taskPriority, taskDescription, currentProjectID);
             renderTasks(currentProjectID);
+        }
 
+        if(e.target.className == "radio-input"){
+    
+            let taskIndex = e.target.parentNode.id.slice(4,5);
+            projectList[currentProjectID].todo.splice(parseInt(taskIndex), 1);
+            renderTasks(currentProjectID);
         }
     });
 

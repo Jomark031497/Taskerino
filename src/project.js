@@ -1,29 +1,22 @@
+import { LOCAL_STORAGE_PROJECTS } from "./domloader";
 
+export let projectList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECTS)) || [];
 
-//the "database"
-export let projectList = [];
-
-//a factory function to create projects
 const projectFactory = (title) => {
-
-    return {id: projectList.length +1 , title: title, todo: [] };
+    return { id: projectList.length + 1, title: title, todo: [] };
 }
 
-
-//a function to invoke the factory function and add the created project to the database
 export const createProject = (title) => {
     const newProject = projectFactory(title);
     projectList.push(newProject);
 }
 
-const todoFactory = (taskName,taskPriority, taskDescription) => {
-
-    return {taskName,taskPriority,taskDescription};
+const todoFactory = (taskName, taskPriority, taskDescription) => {
+    return { taskName, taskPriority, taskDescription };
 };
 
-export const createTodo = (taskName,taskPriority,taskDescription,id) => {
-
-    const newTodo = todoFactory(taskName,taskPriority,taskDescription,id);
+export const createTodo = (taskName, taskPriority, taskDescription, id) => {
+    const newTodo = todoFactory(taskName, taskPriority, taskDescription, id);
     projectList[id].todo.push(newTodo);
     console.log(projectList[id]);
 };
