@@ -35,11 +35,12 @@ export const renderTasks = (id) => {
     for (let i = 0; i < projectList[id].todo.length; i++) {
 
         const taskCard = document.createElement("div");
-        taskCard.classList.add("task-card");
+        taskCard.classList.add("task-card","ongoing");
         taskCard.id = `task${i}`;
+        
         const radioBtn = document.createElement("input");
-        radioBtn.type = "radio";
-        radioBtn.classList.add("radio-input");
+        radioBtn.type = "checkbox";
+        radioBtn.classList.add("checkbox-input");
 
         const taskName = document.createElement("p");
         taskName.innerText = `Task: ${projectList[id].todo[i].taskName}`;
@@ -52,13 +53,18 @@ export const renderTasks = (id) => {
         const taskDescription = document.createElement("p");
         taskDescription.innerText = `Description: ${projectList[id].todo[i].taskDescription}`;
         taskDescription.classList.add("task-description");
+
         const removeTaskBtn = document.createElement("button");
+        removeTaskBtn.classList.add("remove-task");
+        removeTaskBtn.textContent = 'x';
 
         taskCard.appendChild(radioBtn);
         taskCard.appendChild(taskName);
         taskCard.appendChild(taskPriority);
         taskCard.appendChild(taskDescription);
+        taskCard.appendChild(removeTaskBtn);
         taskList.appendChild(taskCard);
+        
     }
 
     const projTitle = document.createElement("div");
