@@ -37,16 +37,30 @@ export const loadDOMEvents = () => {
         taskName,
         taskPriority,
         taskDescription,
-        currentProjectID
+        currentProjectID,
+        taskStatus="ongoing"
       );
       renderTasks(currentProjectID);
     }
 
-        if(e.target.className == "checkbox-input" || e.target.className === "remove-task"){
-    
-            let taskIndex = e.target.parentNode.id.slice(4,5);
-            projectList[currentProjectID].todo.splice(parseInt(taskIndex), 1);
-            renderTasks(currentProjectID);
+    if (e.target.className === "remove-task") {
+      let taskIndex = e.target.parentNode.id.slice(4, 5);
+      projectList[currentProjectID].todo.splice(parseInt(taskIndex), 1);
+      renderTasks(currentProjectID);
+    }
+  });
+
+  domLoader.taskContainer.addEventListener("change", (e) => {
+    let taskCard = e.target.parentNode;
+    if (taskCard.className === "task-card ongoing") {
+      taskCard.classList.toggle("ongoing");
+      taskCard.classList.toggle("finished");
+      taskCard.style = "text-decoration: line-through";
+      renderTasks(currentProjectID);
+    } else {
+      taskCard.classList.toggle("ongoing");
+      taskCard.classList.toggle("finished");
+      taskCard.style = "text-decoration: none";
     }
   });
 };
