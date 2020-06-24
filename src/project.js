@@ -15,8 +15,7 @@ const todoFactory = (taskName, taskPriority, taskDescription) => {
     return { taskName, taskPriority, taskDescription };
 };
 
-export const createTodo = (taskName, taskPriority, taskDescription, id) => {
-    const newTodo = todoFactory(taskName, taskPriority, taskDescription, id);
+export const createTodo = (taskName, taskPriority, taskDescription, id, taskStatus) => {
+    const newTodo = todoFactory(taskName, taskPriority, taskDescription, id,taskStatus);
     projectList[id].todo.push(newTodo);
-    console.log(projectList[id]);
 };
